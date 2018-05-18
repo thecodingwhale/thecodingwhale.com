@@ -8,7 +8,7 @@ class BlogPost extends Component {
       body
     } = this.props.data.contentfulBlogPost
     return (
-      <div>
+      <div className="container">
         <h1>{title}</h1>
         <div dangerouslySetInnerHTML={{__html: body.childMarkdownRemark.html}} />
       </div>

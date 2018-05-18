@@ -1,19 +1,31 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import Link, { navigateTo } from 'gatsby-link'
 
 const BlogPost = ({node}) => {
   return (
-    <li>
-      <img src={node.heroImage.responsiveResolution.src}/>
-      <Link to={node.slug}><h3>{node.title}</h3></Link>
-      <div>{node.body.childMarkdownRemark.excerpt}</div>
-    </li>
+    <div
+      className="blog-post"
+      onClick={() => navigateTo(node.slug)}
+    >
+      <div className="blog-post__image-wrapper">
+        <img
+          className="blog-post__image"
+          src={node.heroImage.responsiveResolution.src}
+        />
+      </div>
+      <div className="blog-post__content">
+        <h3 className="blog-post__title">
+          {node.title}
+        </h3>
+        <div>{node.body.childMarkdownRemark.excerpt}</div>
+      </div>
+    </div>
   )
 }
 const IndexPage = ({data}) => (
-  <ul className='blog-post'>
+  <div className="container">
     {data.allContentfulBlogPost.edges.map((edge) => <BlogPost node={edge.node} />)}
-  </ul>
+  </div>
 )
 
 export default IndexPage
@@ -36,7 +48,7 @@ export const pageQuery = graphql`
               }
             }
             heroImage {
-              responsiveResolution(width: 300, height: 300) {
+              responsiveResolution(width: 150, height: 150) {
                 src
               }
             }
