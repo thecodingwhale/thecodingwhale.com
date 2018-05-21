@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import Link, { navigateTo } from 'gatsby-link'
 
 const BlogPost = ({node}) => {
@@ -22,16 +23,32 @@ const BlogPost = ({node}) => {
     </div>
   )
 }
-const IndexPage = ({data}) => (
-  <div className="container">
-    {data.allContentfulBlogPost.edges.map((edge) => <BlogPost node={edge.node} />)}
+const IndexPage = ({ data }) => (
+  <div>
+    <Helmet
+      title={`Home ${data.site.siteMetadata.title}`}
+      meta={[
+        {
+          name: 'description',
+          content: 'Everything related between web development and design.'
+        }
+      ]}
+    />
+    <div className="container">
+      {data.allContentfulBlogPost.edges.map((edge, index) => <BlogPost key={index} node={edge.node} />)}
+    </div>
   </div>
 )
 
 export default IndexPage
 
 export const pageQuery = graphql`
-   query pageQuery {
+  query pageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    },
     allContentfulBlogPost (
     filter: {
       node_locale: {eq: "en-US"}
@@ -55,5 +72,5 @@ export const pageQuery = graphql`
           }
         }
     }
-   }
+  }
 `

@@ -31,15 +31,9 @@ const Footer = () => (
     </div>
   </footer>
 );
+
 const TemplateWrapper = ({ children }) => (
   <div className="template">
-    <Helmet
-      title="Gatsby Default Starter"
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
     <Header />
     <div className="content">
       {children()}

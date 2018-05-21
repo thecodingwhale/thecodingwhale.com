@@ -2,7 +2,7 @@ require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: '| thecodingwhale.com',
   },
   plugins: [
     {
@@ -13,16 +13,16 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          `Libre Baskerville\:100`,
-          `source sans pro\:300,400` // you can also specify font weights and styles
+          'Libre Baskerville\:100',
+          'source sans pro\:300,400' // you can also specify font weights and styles
         ]
       }
     },
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: 'gatsby-plugin-sass',
       options: {
         precision: 8,
       },
